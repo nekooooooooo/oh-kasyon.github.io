@@ -91,6 +91,7 @@ const promptForCredentials = async () => {
                         <input type="password" id="current_password" class="custom-swal-input">
                 </div>
             `,
+            showCancelButton: true,
             preConfirm: () => {
                 const currentEmail = Swal.getPopup().querySelector("#current_address").value.trim()
                 const currentPassword = Swal.getPopup().querySelector("#current_password").value.trim()
