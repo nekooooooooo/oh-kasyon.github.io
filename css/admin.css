@@ -1,0 +1,669 @@
+:root {
+    --offwhite: #fafafa;
+    --primary: #00a0f0;
+    --secondary: #ff9d2e;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: bold;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(180deg, #00a0f0 0%, hsla(212, 93%, 49%, 1) 100%);
+    transition: 0.2s;
+    overflow-x: hidden;
+}
+
+.navigation.active {
+    width: 60px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+
+.navigation ul li.active {
+    background: #ff9d2e;
+}
+
+.navigation ul li:hover {
+    background: #007194;
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.navigation ul li:nth-child(1):hover {
+    background: transparent;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .icon img {
+    position: relative;
+    min-width: 50px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .icon .fas {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    position: relative;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+.navigation ul li:nth-child(1) a .title {
+    text-align: center;
+}
+
+.navigation ul li a .second_title {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: #F5F5F5;
+    transition: 0.2s;
+}
+
+.main.active {
+    width: calc(100% - 60px);
+    left: 60px
+}
+
+.main .topbar {
+    width: 100%;
+    background: #FFFFFF;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.topbar-title {
+    width: 100%;
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.toggle::before {
+    content: '\f0c9';
+    font-family: fontAwesome;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: #111;
+}
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.details .businesses,
+.details .business,
+.details .reservations,
+.details .users {
+    position: relative;
+    display: grid;
+    min-height: 150px;
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow-x: auto;
+}
+.home {
+    display: grid;
+    background: #FFFFFF;
+    height: 85vh;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    place-items: center;
+    text-align: center;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardHeader ul li {
+    vertical-align: middle;
+    list-style: none;
+}
+
+.details table {
+    width: 100%;
+    border-collapse:  collapse;
+    margin-top: 10px;
+}
+
+.details table thead {
+    font-weight: 600;
+}
+
+.details .businesses table tr,
+.details .reservations table tr,
+.details .users table tr   {
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.details .businesses table tbody tr:last-child,
+.details .reservations table tbody tr:last-child,
+.details .users table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.details .businesses table tr td,
+.details .reservations table tr td,
+.details .users table tr td {
+    padding: 8px 4px;
+}
+
+.table-businesses thead tr td:last-child,
+.table-reservations thead tr td:last-child {
+    text-align: center;
+}
+
+/* .table-businesses tbody tr td:first-child {
+    display: none;
+} */
+
+.table-businesses tbody tr {
+
+}
+
+.table-businesses tbody tr:hover {
+    background-color: var(--primary);
+    color: var(--offwhite);
+    cursor: pointer;
+}
+
+.table-businesses tbody tr td:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.table-businesses tbody tr td .fas,
+.table-reservations tbody tr td .fas {
+    color: rgb(255, 174, 0);
+    font-size: 24px;
+    transition: 0.2s;
+}
+
+.table-users tbody tr td .fas {
+    color: rgb(233, 14, 14);
+    font-size: 24px;
+    transition: 0.2s;
+}
+
+.table-businesses tbody tr td .fas:hover,
+.table-reservations tbody tr td .fas:hover {
+    color: rgb(153, 109, 15);
+    font-size: 24px;
+}
+
+.table-users tbody tr td .fas:hover {
+    color: rgb(153, 15, 15);
+    font-size: 24px;
+}
+
+.table-reservations thead tr td:hover {
+    background: rgb(255, 136, 0);
+    color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table-reservations-body tr td:last-child,
+.table-users thead tr td:last-child,
+.table-users-body tr td:last-child,
+.table-users thead tr td:first-child,
+.table-users-body tr td:first-child {
+    text-align: center;
+}
+
+.table-reservations-body tr td .status,
+.table-users-body tr td .status {
+    position: relative;
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 5px;
+    letter-spacing: 0px;
+}
+
+.table-reservations-body tr td .status.pending {
+    color: #ff9800;
+}
+
+.table-reservations-body tr td .status.confirmed {
+    color: #2196f3;
+}
+
+.table-reservations-body tr td .status.done {
+    color: #4caf50;
+}
+
+.table-reservations-body tr td .status.cancelled {
+    color: #f44336;
+}
+
+.table-reservations-body tr td .status.declined {
+    color: #f44336;
+}
+
+.table-users-body tr td img {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+}
+
+/* .table-users-body tr td .status.deactivated {
+    background: #ff9800;
+}
+
+.table-users-body tr td .status.admin {
+    background: #2196f3;
+}
+
+.table-users-body tr td .status.normal {
+    background: #4caf50;
+}
+
+.table-users-body tr td .status.banned {
+    background: #f44336;
+} */
+
+.table-users-body tr td .status.deactivated {
+    color: #ff9800;
+}
+
+.table-users-body tr td .status.admin {
+    color: #2196f3;
+}
+
+.table-users-body tr td .status.normal,
+.table-users-body tr td .status.active {
+    color: #4caf50;
+}
+
+.table-users-body tr td .status.banned {
+    color: #f44336;
+}
+
+.btn {
+    padding: 10px;
+    background: rgb(21, 162, 243);
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.2s;
+}
+
+.edit-business-btns {
+    float: right;
+}
+
+.buttonGroup div {
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+.buttonGroup:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.cancelbtn, 
+.deletebtn {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgb(21, 162, 243);
+    border-radius: 5px;
+    color: #FFFFFF;
+    transition: 0.2s;
+    margin-left: 5px;
+    width: 20%;
+}
+
+.btn:hover,
+.cancelbtn:hover, 
+.deletebtn:hover {
+    background: rgb(15, 117, 175);
+    cursor: pointer;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+/* Tooltip text */
+i.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 5px 20px;
+    border-radius: 5px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 105%;
+
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+i.tooltip:hover .tooltiptext {
+    font-size: 18px;
+    visibility: visible;
+    opacity: 1;
+}
+
+i.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #000000ce;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+}
+
+.modal-content label,
+.modal-content .label {
+    margin-left: 5px;
+}
+
+.modal-content img.normalImage,
+.modal-content img.img360 {
+    display: none;
+    margin: 0px auto 10px auto;
+    max-width: 70%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: #FAFAFA;
+}
+  
+#myBar {
+    width: 1%;
+    height: 2px;
+    background-color: rgb(30, 200, 223);
+    margin-bottom: 5px;
+    transition: all .2s linear;
+}
+
+#task {
+    margin-bottom: 5px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content input, select, textarea,
+.business-info input, select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+}
+
+.business-info {
+    padding: 20px;
+}
+
+.business-info img.normalImage,
+.business-info img.img360 {
+    margin: 0px auto 10px auto;
+    max-width: 70%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* .modal-content input:required {
+    border: 1px solid red;
+} */
+  
+
+.modal-content input:required:invalid,
+.modal-content textarea:required:invalid {
+    color: red;
+    border-color: red;
+    box-shadow: 0 0 2px red;
+}
+
+.modal-content input:required:valid,
+.modal-content textarea:required:valid {
+    border-color: var(--primary);
+    box-shadow: 0 0 2px var(--primary);
+}
+  /**
+   * style input elements that have a required
+   * attribute and a hover state
+   */
+.modal-content input:required:hover {
+    opacity: 1;
+}
+
+.colored-toast.swal2-icon-success {
+    background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+    background-color: #f27474 !important;
+}
+
+.colored-toast.swal2-icon-warning {
+    background-color: #f8bb86 !important;
+}
+
+.colored-toast.swal2-icon-info {
+    background-color: #3fc3ee !important;
+}
+
+.colored-toast.swal2-icon-question {
+    background-color: #87adbd !important;
+}
+
+.colored-toast .swal2-title {
+    color: white;
+}
+
+.colored-toast .swal2-close {
+    color: white;
+}
+
+.colored-toast .swal2-content {
+    color: white;
+}
+
+.status-drop-down {
+    margin: 0;
+    width: 50%;
+    padding: 10px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+}
+
+.date-range {
+    margin-right: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: var(--primary) solid 1px;
+}
+
+.custom-swal-input {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+}
+
+.custom-swal-label {
+    float: left;
+}
+
+td[colspan="2"] {
+    text-align: center;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/roboto/roboto-regular.ttf);
+}

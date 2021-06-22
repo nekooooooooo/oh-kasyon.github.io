@@ -1,0 +1,210 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">  
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <title>Log-In</title>
+    <style>
+        body {
+          font-family: Roboto;
+          display: flex;
+          min-height: 100vh;
+          flex-direction: column;
+        }
+    
+        main {
+          flex: 1 0 auto;
+        }
+    
+        body {
+          background: linear-gradient(180deg, hsla(200, 100%, 47%, 1) 0%, hsla(212, 93%, 49%, 1) 100%);
+        }
+    
+        .input-field input[type=date]:focus + label,
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=email]:focus + label,
+        .input-field input[type=password]:focus + label {
+          color: #e91e63;
+        }
+    
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+          border-bottom: 2px solid #e91e63;
+          box-shadow: none;
+        }
+
+        @font-face {
+          font-family: Roboto;
+          src: url(fonts/roboto/roboto-regular.ttf);
+        } 
+
+        /* The Modal (background) */
+        .customModal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .alert {
+          display: none;
+          padding: 20px;
+          background-color: #f44336; /* Red */
+          color: white;
+          position: absolute;
+          z-index: 1001;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          overflow: hidden;
+          -webkit-box-shadow: 0 0 5px black;
+          -moz-box-shadow: 0 0 5px black;
+          box-shadow: 0 0 5px black;
+        }
+
+        /* The close button */
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+          color: black;
+        }
+
+        .alert {
+          opacity: 1;
+          transition: opacity 0.2s; /* 600ms to fade out */
+        }
+      </style>  
+</head>
+
+<body>
+    <div class="section"></div>
+    <main>
+      <center>
+        <img class="responsive-img" style="width: 400px;" src="https://firebasestorage.googleapis.com/v0/b/oh-kasyon.appspot.com/o/oh_kasyon_splash.png?alt=media&token=18d80bcf-199e-4d0a-9717-68b249234f39" />
+        <div class="section"></div>
+  
+        <h5 class="white-text">Welcome to Oh-Kasyon!</h5>
+        <div class="section"></div>
+  
+        <div class="container">
+          <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+  
+              <div class='row'>
+                    <div class='col s12'>
+                    </div>
+              </div>
+  
+              <div class='row'>
+                <div class='input-field col s12'>
+                    <input class='validate' type='email' name='email' id='email' />
+                    <label for='email'>Enter your email</label>
+                </div>
+              </div>
+              <div class='row'>
+                <div class='input-field col s12'>
+                    <input class='validate' type='password' name='password' id='password' />
+                    <label for='password'>Enter your password</label>
+                </div>
+                <label style='float: right;'>
+                    <a class='pink-text' href="#" id="forgotPassword"><b>Forgot Password?</b></a>
+                </label>
+              </div>
+  
+              <br />
+              <center>
+                <div class='row'>
+                  <button onclick='login()' id="login" class='col s12 btn btn-large waves-effect orange'>Login as Admin</button>
+                </div>
+                <div class='row'>
+                  <button onclick='loginAsAdmin()' id="loginAsAdmin" class='col s12 btn btn-large waves-effect orange'>Login as Business</button>
+                </div>
+              </center>
+          </div>
+        </div>
+
+        <div id="myModal" class="customModal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Forgot Password!</p>
+          </div>
+        
+        </div>
+
+        <div class="alert">
+          <span class="closebtn">&times;</span>
+          <p id="alert_text">This is an alert!</p>
+        </div>
+      </center>
+
+      <div class="section"></div>
+      <div class="section"></div>
+    </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+
+    <script src="js/firebase.js"> </script>
+    <script src="js/auth.js"> </script>
+    <script src="js/index.js"> </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+
+</html>

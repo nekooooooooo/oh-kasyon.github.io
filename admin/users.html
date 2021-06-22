@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Oh-Kasyon</title>
+  <link type="text/css" rel="stylesheet" href="../css/admin.css"/>
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">  
+</head>
+<body>
+  <div class="container">
+    <div class="navigation active">
+      <ul>
+        <li>
+          <a href="home.html">
+            <span class="icon"><img src="../img/logo.png"></span>
+            <span class="title"><h2>Oh-Kasyon Admin</h2></span>
+          </a>
+        </li>
+        <li>
+          <a href="businesses.html">
+            <span class="icon"><i class="fas fa-building"></i></span>
+            <span class="title">Businesses</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon"><i class="fas fa-comments"></i></span>
+            <span class="title">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="reservations.html">
+            <span class="icon"><i class="fas fa-clipboard"></i></span>
+            <span class="title">Reservations</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+            <span class="title">User Reports</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="#">
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span class="title">Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSettings()">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="title">Account Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logout();">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main active">
+      <div class="topbar">
+        <div class="toggle active" onclick="toggleMenu();"></div>
+        <div class="topbar-title"><h3>Users</h3></div>
+      </div>
+      <div class="details">
+        <div class="users">
+          <div class="cardHeader">
+            <ul>
+              <li>
+                <div class="search">
+                  <label>
+                    <input id="users_search" type="text" placeholder="Search by Email">
+                  </label>
+                </div>
+              </li>
+              <li><div class="btn" onclick='searchUsers(document.getElementById("users_search").value)'>Search</div></li>
+              <li><div class="btn" onclick='showAll()'>Show All</div></li>
+            </ul>
+          </div>
+          <table class="table-users">
+            <thead>
+                <tr>
+                    <td><i class="fas fa-users"></i></td>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td>Address</td>
+                    <td>Contact #</td>
+                    <td>Email</td>
+                    <td>Status</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody class="table-users-body">
+              <!-- JS code -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmDeleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Caution!</h1><br/>
+        <h3 class="label">Are you sure you want to ban this User?</h3>
+
+        <div class="buttonGroup">
+          <div class="cancelbtn" onclick="closeModal2()">Cancel</div>
+          <div id="deletebtn" class="deletebtn" onclick="banUser($(this).attr('class').split(' ').pop())">Ban</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts needed on all html files! -->
+  <script src="https://kit.fontawesome.com/c3fb6ad087.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script src="../js/firebase.js"> </script>
+  <script src="../js/admin/logout.js"> </script>
+  <script src="../js/admin/admin.js"> </script>
+  <script src="../js/admin/users.js"> </script>
+</body>
+</html>

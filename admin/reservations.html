@@ -1,0 +1,160 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oh-Kasyon</title>
+  <link type="text/css" rel="stylesheet" href="../css/admin.css" />
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="navigation active">
+      <ul>
+        <li>
+          <a href="home.html">
+            <span class="icon"><img src="../img/logo.png"></span>
+            <span class="title">
+              <h2>Oh-Kasyon Admin</h2>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="businesses.html">
+            <span class="icon"><i class="fas fa-building"></i></span>
+            <span class="title">Businesses</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon"><i class="fas fa-comments"></i></span>
+            <span class="title">Messages</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="#">
+            <span class="icon"><i class="fas fa-clipboard"></i></span>
+            <span class="title">Reservations</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+            <span class="title">User Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="users.html">
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span class="title">Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showSettings()">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="title">Account Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logout();">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main active">
+      <div class="topbar">
+        <div class="toggle active" onclick="toggleMenu();"></div>
+        <div class="topbar-title">
+          <h3>Reservations</h3>
+        </div>
+      </div>
+      <div class="details">
+        <div class="reservations">
+          <div class="cardHeader">
+            <ul>
+              <li>
+                <div class="search">
+                  <label>
+                    <input id="reservations_search" type="text" placeholder="Search by Business Name">
+                  </label>
+                </div>
+              </li>
+              <li>
+                <div class="btn" onclick='searchReservations(document.getElementById("reservations_search").value)'>
+                  Search</div>
+              </li>
+              <li>
+                <div class="btn" onclick='showAll()'>Show All</div>
+              </li>
+              <li>
+                <label for="date-range">Search by Date of Event: </label>
+                <input type="text" class="date-range" name="date" value="" />
+              </li>
+              <li>
+                <label for="date-range">Filter by Date of Event: </label>
+                <input type="text" class="date-range" name="daterange" value="" />
+              </li>
+              <li>
+                <label for="status_drop_down">Filter by Status: </label>
+                <select id="status_drop_down" class="status-drop-down" onchange="changeFunc()">
+                  <option value="All" selected>All</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Declined">Declined</option>
+                  <option value="Done">Done</option>
+                  <option value="Done & Reviewed">Done & Reviewed</option>
+                  <option value="Cancelled">Cancelled</option>
+              </select>
+              </li>
+              <li>
+                <div class="btn" onclick="createPDF()">Print</div>
+              </li>
+            </ul>
+          </div>
+          <table class="table-reservations">
+            <thead>
+              <tr>
+                <td>Reserved By</td>
+                <td>Business Name</td>
+                <td>No. Of Guests</td>
+                <td>Menu</td>
+                <td>Date of Event</td>
+                <td>Event Start Time</td>
+                <td>Event End Time</td>
+                <td>Date Accepted</td>
+                <td>Status</td>
+              </tr>
+            </thead>
+            <tbody class="table-reservations-body">
+              <!-- JS code setupBusinesses(); -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts needed on all html files! -->
+  <script src="https://kit.fontawesome.com/c3fb6ad087.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <script src="../js/firebase.js"> </script>
+  <script src="../js/admin/logout.js"> </script>
+  <script src="../js/admin/admin.js"> </script>
+  <script src="../js/admin/reservations.js"> </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+</body>
+
+</html>

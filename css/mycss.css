@@ -1,0 +1,13 @@
+body {
+    font-family: Roboto;
+    font-style: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, hsla(200, 100%, 47%, 1) 0%, hsla(212, 93%, 49%, 1) 100%);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/roboto/roboto-regular.ttf);
+}

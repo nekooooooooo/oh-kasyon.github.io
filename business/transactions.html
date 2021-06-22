@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oh-Kasyon | Reservations</title>
+  <link type="text/css" rel="stylesheet" href="../css/businesses.css" />
+  <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+  <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="titlebar">
+    <img
+    src="https://firebasestorage.googleapis.com/v0/b/oh-kasyon.appspot.com/o/oh_kasyon_splash.png?alt=media&token=18d80bcf-199e-4d0a-9717-68b249234f39">
+    <div class="empty"></div>
+  </div>
+  <div class="navbar" id="myNavBar">
+    <div class="topnav">
+      <a href="home.html">Home</a>
+      <div class="dropdown active">
+        <button class="dropbtn reservations">Reservations</button>
+        <div class="dropdown-content">
+          <a href="requests.html">Requests</a>
+          <a href="#">Transactions</a>
+        </div>
+      </div>
+      <a href="conversations.html">Messages</a>
+      <a href="menu.html">Menu</a>
+      <a href="reviews.html">Reviews</a>
+      <div class="dropdown topnav-right">
+        <div class="toggle"></div>
+        <div class="dropdown-content rightside">
+          <a href="#">Account Settings</a>
+          <a href="#" onclick="logout();">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main" id="main">
+    <div class="details">
+      <div class="transactions" style="overflow-x:auto;">
+        <div class="cardHeader">
+          <ul>
+            <li>
+              <div class="search">
+                <label>
+                  <input id="transaction_search" type="text" placeholder="Search by name">
+                </label>
+              </div>
+            </li>
+            <li>
+              <div class="btn" onclick='searchTransactions(document.getElementById("transaction_search").value)'>Search</div>
+            </li>
+            <li>
+              <div class="btn" onclick='showAll()'>Show All</div>
+            </li>
+            <li>
+              <label for="date-range">Search by Date of Event: </label>
+              <input type="text" class="date-range" name="date" value="" />
+            </li>
+            <li>
+              <label for="date-range">Filter by Date of Event: </label>
+              <input type="text" class="date-range" name="daterange" value="" />
+            </li>
+            <li>
+              <label for="status_drop_down">Filter by Status: </label>
+              <select id="status_drop_down" class="status-drop-down" onchange="changeFunc()">
+                <option value="All" selected>All</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Declined">Declined</option>
+                <option value="Done">Done</option>
+                <option value="Done & Reviewed">Done & Reviewed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+            </li>
+            <li>
+              <div class="btn" onclick="createPDF()">Print</div>
+            </li>
+          </ul>
+        </div>
+        <div id="table-transactions">
+          <table class="table-transactions">
+            <thead>
+              <tr>
+                <td>Reserved By</td>
+                <td>No. Of Guests</td>
+                <td>Menu</td>
+                <td>Event Type</td>
+                <td>Event Theme</td>
+                <td>Date of Event</td>
+                <td>Event Start Time</td>
+                <td>Event End Time</td>
+                <td>Date Accepted</td>
+                <td>Status</td>
+                <td>Reason</td>
+                <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody class="table-transactions-body">
+              <!-- JS code -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="https://kit.fontawesome.com/c3fb6ad087.js" crossorigin="anonymous"></script>
+<script src="../js/winbox.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script src="../js/firebase.js"> </script>
+<script src="../js/business/business.js"> </script>
+<script src="../js/business/transactions.js"> </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+</html>
