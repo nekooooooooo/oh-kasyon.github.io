@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">  
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
@@ -167,6 +168,9 @@
                 <div class='row'>
                   <button onclick='loginAsAdmin()' id="loginAsAdmin" class='col s12 btn btn-large waves-effect orange'>Login as Business</button>
                 </div>
+                <label style='float: right;'>
+                  <a class='pink-text' href="#" id="forgotPassword" onclick="openContact()"><b>How to Register? Click Here</b></a>
+                </label>
               </center>
           </div>
         </div>
@@ -205,6 +209,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-</body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  </body>
 
 </html>
