@@ -102,6 +102,11 @@ const promptForCredentials = async () => {
                 }
             }
         }).then((result) => {
+
+            if(result.dismiss === Swal.DismissReason.cancel) {
+                return
+            }
+
             const user = firebase.auth().currentUser;
     
             if (user == null) {
