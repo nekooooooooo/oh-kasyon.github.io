@@ -49,54 +49,62 @@
   <div class="main" id="main">
     <div class="details">
       <div class="requests" style="overflow-x:auto;">
-        <div class="cardHeader">
-          <ul>
-            <li>
-              <div class="search">
-                <label>
-                  <input id="requests_search" type="text" placeholder="Search by name">
-                </label>
-              </div>
-            </li>
-            <li>
-              <div class="btn" onclick='searchTransactions(document.getElementById("requests_search").value)'>Search</div>
-            </li>
-            <li>
-              <div class="btn" onclick='showAll()'>Show All</div>
-            </li>
-            <li>
-              <label for="date-range">Search by Date of Event: </label>
-              <input type="text" class="date-range" name="date" value="" />
-            </li>
-            <li>
-              <label for="date-range">Filter by Date of Event: </label>
-              <input type="text" class="date-range" name="daterange" value="" />
-            </li>
-            <li>
-              <div class="btn" onclick="createPDF()">Print</div>
-            </li>
-          </ul>
-        </div>
-        <table class="table-requests">
-          <thead>
-            <tr>
-              <td>Reserved By</td>
-              <td>No. Of Guests</td>
-              <td>Menu</td>
-              <td>Event Type</td>
-              <td>Event Theme</td>
-              <td>Date of Reservation</td>
-              <td>Date of Event</td>
-              <td>Event Start Time</td>
-              <td>Event End Time</td>
-              <td>Status</td>
-              <td>Actions</td>
-            </tr>
-          </thead>
-          <tbody class="table-requests-body">
-            <!-- JS code -->
-          </tbody>
-        </table>
+        <div class="business">
+          <div class="cardHeader">
+            <h2>Edit Account Info</h2>
+          </div>
+          <div class="business-info">
+            <h2>General Info</h2><br />
+            <label for="business_name">Business Name</label>
+            <input type="text" id="business_name" name="businessname" placeholder="Enter Business Name..." required>
+
+            <label for="owner_name">Business Owner Name</label>
+            <input type="text" id="owner_name" name="ownername" placeholder="Enter Business Owner Name..." required>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Write something..." style="height:100px" required></textarea>
+
+            <label for="maxCapacity">Max Capacity</label>
+            <input type="text" id="maxCapacity" name="maxcapacity" placeholder="Enter Max Capacity..." required>
+
+            <label for="mobile_no">Mobile #</label>
+            <input type="text" id="mobile_no" name="mobileno" placeholder="Enter Mobile Number..." required>
+
+            <label for="tel_no">Telephone #</label>
+            <input type="text" id="tel_no" name="telno" placeholder="Enter Telephone Number..." required>
+
+
+            <h2>Account</h2><br />
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter Email..." required>
+
+            <!-- <label for="password">Password for Business Owner's Account</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password..." required>
+
+            <label for="repeatPassword">Confirm Password</label>
+            <input type="password" id="repeatPassword" name="repeatpassword" placeholder="Please Repeat the Password..."
+              required> -->
+
+            <h2>Business Location</h2><br />
+            <label for="latitude">Latitude</label>
+            <input type="text" id="latitude" name="latitude" placeholder="Please Enter the Exact Latitude...">
+
+            <label for="longitude">Longitude</label>
+            <input type="text" id="longitude" name="longitude" placeholder="Please Enter the Exact Longitude...">
+
+            <h2>Images</h2><br/>
+            <label for="business_img">Image of Business from the outside</label>
+            <input type="file" id="business_img" name="businessimg" accept="image/*">
+            <img id="normalImage" class="normalImage" src="#">
+            <br>
+
+            <label for="business_360_img">360 Image</label>
+            <input type="file" id="business_360_img" name="business360img" accept="image/*">
+            <img id="img360" class="img360" src="#">
+          </div>
+          <div class="edit-business-btns">
+            
+          </div>
       </div>
     </div>
   </div>
@@ -126,7 +134,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script src="../js/firebase.js"> </script>
 <script src="../js/business/business.js"> </script>
-<script src="../js/business/requests.js"> </script>
+<script src="../js/business/editaccountinfo.js"> </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
