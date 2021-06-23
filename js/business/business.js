@@ -103,7 +103,6 @@ const changeEmail = async () => {
 }
 
 const changePassword = async () => {
-    const user = auth.currentUser
     const credential = await promptForCredentials()
 
     console.log(credential)
