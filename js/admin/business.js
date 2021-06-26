@@ -214,7 +214,7 @@ const editBusiness = async(changed) => {
 
     Toast.fire({
         icon: 'success',
-        title: 'Business has been updated!',
+        title: 'Food has been updated!',
     })
 }
 
@@ -837,3 +837,4 @@ function setInputFilter(textbox, inputFilter) {
         });
     });
 }
+
