@@ -44,7 +44,6 @@ db.collection("businesses").where("business_owner_id", "==", uid)
         }
     }).catch((error) => {
         console.log("Error getting document: ", error);
-<<<<<<< HEAD
     });
 
 const openAccountSettings = async () => {
@@ -369,6 +368,3 @@ const Loading = Swal.mixin({
         Swal.showLoading()
     }
 })
-=======
-    });
->>>>>>> parent of 4b17eb2 (added business account settings)
