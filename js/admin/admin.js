@@ -91,7 +91,6 @@ const promptForCredentials = async () => {
                         <input type="password" id="current_password" class="custom-swal-input">
                 </div>
             `,
-            showCancelButton: true,
             preConfirm: () => {
                 const currentEmail = Swal.getPopup().querySelector("#current_address").value.trim()
                 const currentPassword = Swal.getPopup().querySelector("#current_password").value.trim()
@@ -102,11 +101,6 @@ const promptForCredentials = async () => {
                 }
             }
         }).then((result) => {
-
-            if(result.dismiss === Swal.DismissReason.cancel) {
-                return
-            }
-
             const user = firebase.auth().currentUser;
     
             if (user == null) {

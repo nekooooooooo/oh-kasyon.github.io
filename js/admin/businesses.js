@@ -34,7 +34,7 @@ const setupBusinesses = (data) => {
         let email = data.business_email ?? "No Data Found";
         let status = data.business_status ?? "No Data Found"
         const tbody = `
-            <tr id="${bid}" onclick="editBusiness('${bid}')">
+            <tr id="${bid}">
                 <td>${businessName} </td>
                 <td>${businessOwner}</td>
                 <td>${address}</td>

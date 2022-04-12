@@ -275,12 +275,12 @@ body {
 
 }
 
-.table-businesses tbody tr:hover {
+/* .table-businesses tbody tr:hover {
     background-color: var(--primary);
     color: var(--offwhite);
     cursor: pointer;
 }
-
+ */
 .table-businesses tbody tr td:last-child {
     display: grid;
     grid-template-columns: 1fr 1fr;

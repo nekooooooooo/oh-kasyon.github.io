@@ -1,22 +1,9 @@
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const businessId = urlParams.get("id");
+document.body.style.backgroundImage = `url("${localStorage.getItem("background_url")}")`;
 
-console.log(businessId);
+const bid = localStorage.getItem('bid');
 
-const businessRef = db.collection("businesses").doc(businessId)
+const businessRef = db.collection("businesses").doc(bid)
 
-// const business_name = document.getElementById("business_name")
-// const owner_name = document.getElementById("owner_name")
-// const address = document.getElementById("address")
-// const maxCapacity = document.getElementById("maxCapacity")
-// const mobile_no = document.getElementById("mobile_no")
-// const tel_no = document.getElementById("tel_no")
-// const email = document.getElementById("email")
-// const latitude = document.getElementById("latitude")
-// const longitude = document.getElementById("longitude")
-// const normalImage = document.getElementById("normalImage")
-// const img360 = document.getElementById("img360")
 const normalImageInput = document.getElementById("business_img")
 const img360Input = document.getElementById("business_360_img")
 
@@ -29,9 +16,7 @@ const tel_no = $("#tel_no")
 const email = $("#email")
 const latitude = $("#latitude")
 const longitude = $("#longitude")
-// const normalImageInput = $("#business_img")
 const normalImage = $("#normalImage")
-// const img360Input = $("#business_360_img")
 const img360 = $("#img360")
 
 const business_info = document.querySelector('.business-info')
@@ -57,18 +42,6 @@ const setupBusiness = async (businessDoc) => {
     businessValues = await getBusinessValues(businessDoc)
     console.table(businessValues)
 
-    // business_name.value = businessValues.name
-    // owner_name.value = businessValues.owner
-    // address.value = businessValues.address
-    // maxCapacity.value = businessValues.capacity
-    // mobile_no.value = businessValues.mobile_no
-    // tel_no.value = businessValues.tel_no
-    // email.value = businessValues.email
-    // latitude.value = businessValues.geopoint._lat
-    // longitude.value = businessValues.geopoint._long
-    // normalImage.src = businessValues.img_url
-    // img360.src = businessValues.img_360_url
-
     business_name.val(businessValues.name)
     owner_name.val(businessValues.owner)
     address.val(businessValues.address)
@@ -82,8 +55,6 @@ const setupBusiness = async (businessDoc) => {
     img360.attr('src', businessValues.img_360_url)
 
     document.querySelector(".edit-business-btns").innerHTML = `
-        <a id="delete_btn" class="btn btn-red" onclick="openDeleteModal()">Delete</a>
-        <a id="approve_btn" class="btn" onclick="openApproveModal()">Approve</a>
         <a id="save_btn" class="btn" onclick="openSaveModal()">Save</a>
     `
 
@@ -93,53 +64,43 @@ const setupBusiness = async (businessDoc) => {
 
 }
 
-const openDeleteModal = async () => {
-    Swal.fire({
-        icon: 'warning',
-        title: 'Are you sure you want to Delete?',
-        text: "You won't be able to revert this deletion!",
-        showCancelButton: true,
-        confirmButtonText: "Delete"
-    }).then((result) => {
-        if(result.isConfirmed) {
-            deleteBusiness()
-        }
-    })
-}
-
-const deleteBusiness = async () => {
-
-    let getBusiness = await businessRef.get()
-    let data = await getBusiness.data()
-    let account_id = await data.business_owner_id
-    console.log(account_id)
-
-    let loading = Swal.fire({
-        title: 'Loading...',
-        showConfirmButton: false,
-        didOpen: () => {
-            Swal.showLoading()
-        }
-    })
+const getBusinessValues = async(businessDoc) => {
     
-    businessRef.delete().then(() => {
-        db.collection("business_accounts").doc(account_id).delete().then(() => {
-            // console.log("Document successfully deleted!");
-            // location.reload();
-            loading.close()
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'Document successfully deleted!'
-            })
-        }).catch((error) => {
-            loading.close()
-            console.error("Error removing document: ", error);
-        });
-    }).catch((error) => {
-        loading.close()
-        console.error("Error removing document: ", error);
-    });
+    if(!businessDoc.exists) {
+        console.log("No such document!");
+        return
+    }
+
+    return new Promise((resolve, reject) => {
+        const businessData = businessDoc.data()
+        const address = businessData.business_address ?? ""
+        const email = businessData.business_email ?? ""
+        const geopoint = businessData.business_geopoint
+        const img_url = businessData.business_img_url ?? ""
+        const mobile_no = businessData.business_mobile_no ?? ""
+        const owner = businessData.business_owner ?? ""
+        const name = businessData.business_name ?? ""
+        const owner_id = businessData.business_owner_id ?? ""
+        const rating = businessData.business_rating ?? 0
+        const tel_no = businessData.business_tel_no ?? ""
+        const capacity = businessData.business_capacity ?? 0
+        const img_360_url = businessData.business_360_image_url ?? ""
+
+        return resolve({
+            address: address,
+            email: email,
+            geopoint: geopoint,
+            img_url: img_url,
+            img_360_url: img_360_url,
+            owner: owner,
+            mobile_no: mobile_no,
+            name: name,
+            owner_id: owner_id,
+            rating: rating,
+            tel_no: tel_no,
+            capacity: capacity
+        })
+    })
 }
 
 const openSaveModal = async(id) => {
@@ -214,7 +175,7 @@ const editBusiness = async(changed) => {
 
     Toast.fire({
         icon: 'success',
-        title: 'Business has been updated!',
+        title: 'Account Info has been updated!',
     })
 }
 
@@ -622,77 +583,6 @@ async function upload360Image(img, name) {
                     }
                 );
             }
-        })
-    })
-}
-
-const openApproveModal = async() => {
-    Swal.fire({
-        icon: 'warning',
-        title: 'Are you sure you want to Approve this Business??',
-        text: "You won't be able to revert this change!",
-        showCancelButton: true,
-        confirmButtonText: "Approve"
-    }).then((result) => {
-        if(result.isConfirmed) {
-            approveBusiness()
-        }
-    })
-}
-
-const approveBusiness = () => {
-    businessRef.update({
-        business_status: "Approved",
-    }).then(() => {
-        Toast.fire({
-            icon: 'success',
-            title: 'Business has been approved!',
-        })
-        console.log("Document successfully approved!");
-        resolve()
-    })
-    .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
-        resolve()
-    });
-}
-
-const getBusinessValues = async(businessDoc) => {
-    
-    if(!businessDoc.exists) {
-        console.log("No such document!");
-        return
-    }
-
-    return new Promise((resolve, reject) => {
-        const businessData = businessDoc.data()
-        const address = businessData.business_address ?? ""
-        const email = businessData.business_email ?? ""
-        const geopoint = businessData.business_geopoint
-        const img_url = businessData.business_img_url ?? ""
-        const mobile_no = businessData.business_mobile_no ?? ""
-        const owner = businessData.business_owner ?? ""
-        const name = businessData.business_name ?? ""
-        const owner_id = businessData.business_owner_id ?? ""
-        const rating = businessData.business_rating ?? 0
-        const tel_no = businessData.business_tel_no ?? ""
-        const capacity = businessData.business_capacity ?? 0
-        const img_360_url = businessData.business_360_image_url ?? ""
-
-        return resolve({
-            address: address,
-            email: email,
-            geopoint: geopoint,
-            img_url: img_url,
-            img_360_url: img_360_url,
-            owner: owner,
-            mobile_no: mobile_no,
-            name: name,
-            owner_id: owner_id,
-            rating: rating,
-            tel_no: tel_no,
-            capacity: capacity
         })
     })
 }
