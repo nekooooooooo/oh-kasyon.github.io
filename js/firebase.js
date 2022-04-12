@@ -1,13 +1,13 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyACADaYjlCizM7DzwpEynVuANMq4ZTDIWU",
-  authDomain: "oh-kasyon.firebaseapp.com",
-  databaseURL: "https://oh-kasyon-default-rtdb.firebaseio.com",
+  apiKey: "apiKey",
+  authDomain: "authDomain",
+  databaseURL: "databaseURL",
   projectId: "oh-kasyon",
   storageBucket: "oh-kasyon.appspot.com",
-  messagingSenderId: "81723234747",
-  appId: "1:81723234747:web:4ce8092f4861402a678c9e",
-  measurementId: "G-4ZJ9EM3DH8"
+  messagingSenderId: "messagingSenderId",
+  appId: "appId",
+  measurementId: "measurementId"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
